@@ -1,0 +1,149 @@
+#Q1
+num = float(input())
+if num >= 0:
+    print(num)
+else:
+    print(num * -1)
+
+#Q2
+num1 = int(input())
+num2 = int(input())
+if num1 % num2 == 0:
+    print(int(num1 / num2))
+else:
+    print(num1 % num2)
+
+#Q3
+
+a = int(input())
+b = int(input())
+c = int(input())
+if (a <= b) and (b <= c):
+    print(a, c)
+elif (a <= c) and (c <= b):
+    print(a, b)
+elif (b <= a) and (a <= c):
+    print(b, c)
+elif (b <= c) and (c <= a):
+    print(b, a)
+elif (c <= b) and (b <= a):
+    print(c, a)
+elif (c <= a) and (a <= b):
+    print(c, b)
+
+#Q4
+
+num = int(input())
+if num % 2 == 0 and num % 3 != 0 and num % 5 != 0:
+    print('Divisible by 2')
+elif num % 2 == 0 and num % 3 == 0 and num % 5 != 0:
+    print('Divisible by 2, Divisible by 3')
+elif num % 2 == 0 and num % 3 == 0 and num % 5 == 0:
+    print('Divisible by 2, Divisible by 3, Divisible by 5')
+elif num % 2 != 0 and num % 3 == 0 and num % 5 != 0:
+    print('Divisible by 3')
+elif num % 2 != 0 and num % 3 == 0 and num % 5 == 0:
+    print('Divisible by 3, Divisible by 5')
+elif num % 2 != 0 and num % 3 != 0 and num % 5 == 0:
+    print('Divisible by 5')
+elif num % 2 == 0 and num % 3 != 0 and num % 5 == 0:
+    print('Divisible by 2, Divisible by 5')
+
+#teacherssolving
+num = int(input())
+if num % 2 == 0:
+    print('Divisible by 2')
+if num % 3 == 0:
+    print('Divisible by 3')
+if num % 5 == 0:
+    print('Divisible by 5')
+
+
+#Q5
+
+age = int(input())
+if 0 <= age <= 17:
+    print('Child')
+elif 18 <= age <= 64:
+    print('Can Work')
+else:
+    print('Retired')
+
+#Q6
+
+year = int(input())
+if year % 400 == 0:
+    print('Leap year')
+elif year % 100 == 0:
+    print('Not leap year')
+elif year % 4 == 0:
+    print('Leap year')
+else:
+    print('Not leap year')
+
+
+#Q7
+
+midterm = int(input())
+labs = int(input())
+assignments = int(input())
+project = int(input())
+final = int(input())
+note = 20 * midterm / 100 + 10 * labs / 100 + 15 * assignments / 100 + 25 * project / 100 + 30 * final / 100
+if 75 <= note <= 100:
+    print('A')
+elif 55 <= note <= 75:
+    print('B')
+elif 35 <= note <= 55:
+    print('C')
+elif 0 <= note <= 35:
+    print('F')
+
+#Q8
+
+mass = int(input())
+height = float(input())
+BMI = float(mass / height ** 2)
+print("%.1f" % BMI)
+if BMI <= 15:
+    print('Very severely underweight')
+elif 15 <= BMI <= 16:
+    print('Severely underweight')
+elif 16 <= BMI <= 18.5:
+    print('Underweight')
+elif 18.5 <= BMI <= 25:
+    print('Normal (healthy weight)')
+elif 25 <= BMI <= 30:
+    print('Overweight')
+elif 30 <= BMI <= 35:
+    print('Obese Class I (Moderately obese)')
+elif 35 <= BMI <= 40:
+    print('Obese Class II (Severely obese)')
+elif 40 <= BMI:
+    print('Obese Class III (Very severely obese)')
+
+#Q9
+
+num1 = int(input())
+num2 = int(input())
+if num1 % num2 == 0:
+    print('Multiple')
+elif num2 % num1 == 0:
+    print('Multiple')
+else:
+    print('Not Multiple')
+
+#Q10
+
+a = float(input())
+b = float(input())
+c = float(input())
+#ax**2+bx+c
+disc_ = float(b ** 2 - 4 * a * c)
+if disc_ == 0:
+    k = float((-1 * b - disc_ ** (1/2)) / (2 * a))
+    print(k)
+elif disc_ > 0:                 #x1 = (-b - disc_) / 2 * a       #x2 = (b - disc_) / 2 * a
+    m = float((-b + disc_ ** (1/2)) / (2 * a))
+    n = float((-b - disc_ ** (1/2)) / (2 * a))
+    print(m, n)
