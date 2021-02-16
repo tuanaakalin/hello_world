@@ -1,0 +1,90 @@
+#Q1
+
+input1 = input('Enter an integer.')
+input2 = input('Enter another integer.')
+input3 = input('Enter another integer.')
+number1 = int(input1)
+number2 = int(input2)
+number3 = int(input3)
+sum_of_numbers = number1 + number2 + number3
+mean_of_numbers = ("%.2f" % (sum_of_numbers / 3))
+mult_of_numbers = ("%d" % (number1 * number2 * number3))
+print('Sum:', sum_of_numbers, 'Mean:', mean_of_numbers, 'Mult:', mult_of_numbers)
+
+#Q2
+
+A = int(input('principal'))
+i = int(input('interest rate'))
+n = int(input('duration'))
+S = (A * (1 + i / 100) ** n)
+print("%.2f" % S)
+
+#Q3
+
+import math
+s_radius = input('What\'s the radius of the circle?')
+m = float(s_radius)
+perimeter_of_circle = (2 * math.pi * m)
+surface_of_circle = (math.pi * m ** 2)
+print("%.10f" % perimeter_of_circle, "%.10f" % surface_of_circle)
+
+#Q4
+
+num = int(input('Enter a number.'))
+# num * (num + 1) / 2
+sum_to_num = num * (num + 1) / 2
+print(int(sum_to_num))
+
+#Q5
+
+#Q6
+
+a = int(input("Please enter the first number: "))
+b = int(input("Please enter the second number: "))
+# Version 1 (Classic Swap):
+temp = a
+a = b
+b = temp
+print("Here they are inversed: " + str(a) + " " + str(b))
+
+#Q7
+
+ch = (input("Enter a character: "))
+print("The ascii value of " + ch + " is: " + str(ord(ch)))
+
+#Q8
+
+letter = input('Enter a lowercase letter.')
+print(letter.capitalize())
+
+#way of teacher
+ll = input("Plese enter a lowercase letter: ")
+ul = chr(ord(ll) + ord("A") - ord("a"))
+print("Here is the upparcase version: " + ul)
+
+#Q9
+
+import math
+radius = int(input('Enter a radius.'))
+print("%.9f" % ((4 / 3) * math.pi * radius ** 3))
+
+#10
+
+year = int(input('year'))
+month = int(input('month'))
+day = int(input('day'))
+hour = int(input('hour'))
+min_ = int(input('min'))
+a = 60
+b = 60
+c = 24
+d = 30
+e = 12
+print(min_ * a + hour * b ** 2 + day * c * b ** 2 + month * d * c * b ** 2 + year * e * d * c * 60 ** 2)
+
+#Q11
+
+a = int(input('number1'))
+b = int(input('number2'))
+c = int(input('number3'))
+print(a * (a % 2) + b * (b % 2) + c * (c % 2))
