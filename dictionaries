@@ -1,0 +1,185 @@
+#PS10
+#dictionaries
+#my_dict[name_of_keys].append(value) --> adds new values to a key
+#my_dict[name_of_keys] = value --> matches a key with a value (str or int or list or anything)
+#my_dict[name_of_keys] = [value] --> matches a key with a value which is in list form due to []
+#my_dict[name_of_keys] = 'value' --> matches a key with a value which is in str form due to ''
+
+#for n decimal point -->> "{:.nf}".format(value)
+
+
+#Q1
+
+def splitted_bill(bill):
+    total_bill = 0
+    for keys in bill:
+        total_bill += bill[keys]
+    ave_bill = total_bill // len(bill)
+    for person in bill:
+        bill[person] -= ave_bill
+    return bill
+
+print(splitted_bill({'A':20, 'B':15, 'C':10}))
+
+
+#Q2
+def diff_types(listx):
+    a = dict()
+    for item in listx:
+        type_of_item = type(item)
+        if type(item) not in a:
+            a[type_of_item] = [item]
+        else:
+            a[type_of_item].append(item)
+    for items in a:
+        print(items, '->', a[items], end=' ')
+        print()
+
+diff_types([10, 4.20, False, 'Word', 'CMPE150', 30, 3.5, 9.99, 'oblivion', True, 68, 88, "88"])
+
+
+#Q3
+
+def sorted_list(dictx):
+    a = []
+    for items in dictx:
+        a.append([dictx[items], items])
+    a.sort()
+    a.reverse()
+    for tuples in a:
+        tuples.reverse()
+        t = tuple(tuples)
+        a[a.index(tuples)] = t
+    return a
+
+print(sorted_list({3:1, 2:2, 1:3}))
+print(sorted_list({'a' :5, 'b' :10, 'c' :2, 'd' :3, 'e' :8}	))
+
+
+#Q4
+
+def letter_count(sentence):
+    a = list()
+    b = []
+    my_dict = dict()
+    s = sentence.lower() #what we think, we become.
+    for i in s:
+        if i.isalpha():
+            b.append(i) #['w', 'h', 'a', 't', 'w', 'e', 't', 'h', 'i', 'n', 'k', 'w', 'e', 'b', 'e', 'c', 'o', 'm', 'e']
+    for l in b:
+        count_ = b.count(l)
+        freq = "{:.2f}".format(count_/len(b))           ###how to order alphabetically for the same values ???????????????????
+        if [freq, l] not in a:
+            a.append([freq, l])
+    a.sort()
+    a.reverse() #[['0.21', 'e'], ['0.16', 'w'], ['0.11', 't'], ['0.11', 'h'], ['0.05', 'o'], ['0.05', 'n'], ['0.05', 'm'], ['0.05', 'k'], ['0.05', 'i'], ['0.05', 'c'], ['0.05', 'b'], ['0.05', 'a']]
+    for items in a:
+        my_dict[items[1]] = items[0] #{'e': '0.21', 'w': '0.16', 't': '0.11', 'h': '0.11', 'o': '0.05', 'n': '0.05', 'm': '0.05', 'k': '0.05', 'i': '0.05', 'c': '0.05', 'b': '0.05', 'a': '0.05'}
+    for k in my_dict:
+        print(k, '->', my_dict[k], end=' ')
+        print()
+
+letter_count('What we think, we become.')
+
+
+#Q5
+
+def dict_merge(*dicts):
+    final_dict = dict()
+    for dict_ in dicts:
+        for keys in dict_:
+            if keys not in final_dict:
+                final_dict[keys] = [dict_[keys]]
+            else:
+                final_dict[keys].append(dict_[keys])
+    return final_dict
+
+print(dict_merge({"A": 1, "B": 2}, {"A": 3}))
+print(dict_merge({"A": 1, "B": 2, "C": 3}))
+print(dict_merge({"A": 1, "B": 2, "C": 3}, {"A": 4, "D": 5}, {"A": 4}))
+
+
+#Q6
+
+def zipped_lists(listx, listy):
+    a= dict()
+    for i in listx:
+        for l in listy:
+            a[i] = l
+    return a
+
+print(zipped_lists(["melih", "burak", "ahmet", "recep", "melis"],[1,2,3,4,5]))
+
+
+#sets
+#sets include distinct elements
+#set1.union(set2)   also   set1 | set2
+#set1.intersection(set2)   also   set1 & set2
+#set1.difference(set2)   also   set1 - set2
+
+
+#Q1
+
+def distinct_elements(series):
+    setx = list(set(series))
+    return setx
+
+print(distinct_elements([3, 5, 4, 4, 7, 11, 2, 8]))
+print(distinct_elements([1, 8, 1, 1, 27, 32, 17, 32]))
+
+
+#Q2
+
+def operations_sets(set1, set2):
+    u = set1 | set2
+    i = set1 & set2
+    d1 = set1 - set2
+    d2 = set2 - set1
+    print(set1, set2, '=', u)
+    print(set1, set2, '=', i)
+    print(set1, set2, '=', d1)
+    print(set2, set1, '=', d2)
+
+A = {1, 2, 3, 4, 5, 6}
+B = {1, 1, 2, 7, 11}
+operations_sets(A, B)
+
+
+#Q3
+
+def diff(list1, list2):
+    set1 = set(list1)
+    set2 = set(list2)
+    print('Missing values in list1 = ', list(set2-(set1&set2)))
+    print('Additional values in list1 = ', list(set1-set2))
+
+diff([1, 2, 3, 4, 5, 6], [4, 5, 6, 7, 8])
+diff([1, 3, 5, 7], [2, 4, 6, 8])
+
+
+#Q4
+
+def distinct_string(word):
+    if len(word) == len(set(word)):
+        return True
+    else:
+        return False
+word_ = input()
+print(distinct_string(word_))
+
+
+#Q5
+
+numgram = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+word = input()
+a = []
+for i in word:
+    if i.isdigit():
+        a.append(i)
+a = set(a)
+if len(a) == len(numgram):
+    print('Numgram')
+else:
+    print('Not a numgram')
+
+
