@@ -1,0 +1,301 @@
+#Q1
+
+def same_elements(tuple_):
+    tuple_ = tuple(tuple_)
+    length = len(tuple_)
+    i = 0
+    for item in tuple_:
+        for i in range(tuple_.index(item) + 1, length):
+            if item != tuple_[i]:
+                return False
+        return True
+
+
+tuple1 = (45, 45, 45, 45)
+tuple2 = (12, 34, 12)
+print(same_elements(tuple1))
+print(same_elements(tuple2))
+
+
+#Q2
+
+def filter_even(listx):
+    a = []
+    for item in listx:
+        if item % 2 != 0:
+            a.append(item)
+    return a
+
+list1 = [1, 2, 3, 4, 5, 6, 7]
+list2 = [2, 4, 6, 8]
+print(filter_even(list1))
+print(filter_even(list2))
+
+
+#Q3
+
+#a
+def even_sum(listx):
+    a = []
+    sum = 0
+    for item in listx:
+        if item % 2 == 0:
+            a.append(item)
+    for item_ in a:
+        sum += item_
+    return sum
+
+list1 = [1, 2, 3, 4, 5]
+list2 = [1, 3, 5, 7]
+print(even_sum(list1))
+print(even_sum(list2))
+
+#b
+def odd_sum(listx):
+    a = []
+    sum = 0
+    for item in listx:
+        if item % 2 != 0:
+            a.append(item)
+    for item_ in a:
+        sum += item_
+    return sum
+
+list1 = [1, 2, 3, 4, 5]
+list2 = [2, 18, 6, 0]
+print(odd_sum(list1))
+print(odd_sum(list2))
+
+
+#Q4
+
+def remove_dup(listx):
+    a = []
+    for item in listx:
+        if item not in a:
+            a.append(item)
+    return a
+
+list1 = [1, 1, 1, 1, 1, 2, 2, 2, 3, 2, 2, 4, 5]
+list2 = [0, 0, 0, 0, 0, 0, 0]
+print(remove_dup(list1))
+print(remove_dup(list2))
+
+#Q5
+
+def remove_cons_dup(list1):
+    i = 1
+    while i < len(list1):
+        if list1[i-1] == list1[i]:
+            list1.pop(i)
+        else:
+            i += 1
+    return list1
+
+print(remove_cons_dup([1, 1, 1, 1, 1, 2, 2, 2, 3, 2, 2, 4, 5]))
+print(remove_cons_dup([0,0,0,0,0,0,0]))
+
+
+#Q6
+
+def odd_occ(listx):
+    a = []
+    for item in listx:
+        if listx.count(item) % 2 != 0:
+            a.append(item)
+    b =[]
+    for i in a:
+        if i not in b:
+            b.append(i)
+    for l in b:
+        print(l, end=' ')
+
+list1 = [1, 1, 2, 3, 4, 2, 'apple', 'banana', 'banana']
+list2 = [2, 2, 3, 3, 2]
+list3 = ['a', 'b', 'c', 'c', 'b', 'a']
+odd_occ(list1)
+print()
+odd_occ(list2)
+print()
+odd_occ(list3)
+print()
+
+
+#Q7
+
+def neigh_sum(listx):
+    length = len(listx)
+    a = []
+    a.append(listx[0] + listx[1])
+    #print(a)
+    for i in range(1, length - 1):
+        a.append(listx[i-1] + listx[i] + listx[i+1])
+    a.append(listx[length-2] + listx[length-1])
+    return a
+
+list1 = [10, 20, 30, 40, 50]
+print(neigh_sum(list1))
+
+
+#Q8
+
+#a
+def to_the_left(listx, k):
+    return listx[k:] + listx[:k]
+
+ll = [1, 2, 3, 4, 5]
+a = 2
+print(to_the_left(ll, a))
+lm = [2, 18, 6, 0]
+b = 3
+print(to_the_left(lm, b))
+
+#b
+def direction_bool(l, n, is_left):
+    if is_left:
+        return l[n:] + l[:n]
+    else:
+        return l[-n:] + l[:-n]
+
+ll = [1, 2, 3, 4, 5]
+a = 2
+print(direction_bool(ll, a, True))
+lm = [2, 18, 6, 0]             #[18, 6, 0, 2]
+b = 3
+print(direction_bool(lm, b, False))
+
+
+#Q9
+
+#a
+def distance(x, y):
+    print(((y[1]-x[1])**2 + (y[0]-x[0])**2)**(1/2))
+
+a, b = (3, 0), (0, 4)
+m, n = (5, 8), (10, 20)
+distance(a, b)
+distance(m, n)
+
+#b
+def closest(x, y):
+    x_1 = (x[0]**2+ x[1]**2)**(1/2)
+    y_1 = (y[0]**2+ y[1]**2)**(1/2)
+    if x_1 < y_1:
+        return x
+    else:
+        return y
+
+a, b = (3, 0), (0, 4)
+m, n = (11, 7), (6, 8)
+print(closest(a, b))
+print(closest(m, n))
+
+#c
+###try again
+
+
+
+
+
+#Q10
+
+ #a
+def add_tuples(a, b):
+    nominator = (a[0] * b[1] + b[0] * a[1])
+    denominator = a[1]*b[1]
+    return nominator,denominator
+
+tup1 = (1, 3)
+tup2 = (4, 5)
+tup3 = (3, 5)
+tup4 = (1, 2)
+print(add_tuples(tup1, tup2))
+print(add_tuples(tup3, tup4))
+
+#b
+def mult_frac(a, b):
+    nom = a[0] * b[0]
+    denom = a[1] * b[1]
+    any_factor = min(nom, denom)
+    while any_factor > 1:
+        if nom % any_factor == 0 and denom % any_factor == 0:
+            nom = nom // any_factor
+            denom = denom // any_factor
+        any_factor -= 1
+    return nom, denom
+
+tup1 = (1, 3)
+tup2 = (4, 5)
+tup3 = (3, 5)
+tup4 = (1, 3)
+print(mult_frac(tup1, tup2))
+print(mult_frac(tup3, tup4))
+
+
+#Q11
+
+#a
+def replace(tuplex, k):
+    tuplex = list(tuplex)
+    a = []
+    for item in tuplex:
+        length = len(item)
+        item.remove(item[length-1])
+        item.append(k)
+        a.append(item)
+    a = tuple(a)
+    return a
+
+tuple1 = ([10, 20, 40], [40, 50, 60], [70, 80, 90])
+tuple2 = ([10, 20], [40, 50], [70, 80])
+print(replace(tuple1, 100))
+print(replace(tuple2, 30))
+
+#b
+def replace(listx, k):
+    a = []
+    for item in listx:
+        item = list(item)
+        length = len(item)
+        item.remove(item[length-1])
+        item.append(k)
+        item = tuple(item)
+        a.append(item)
+    return a
+
+tuple1 = [(10, 20, 40), (40, 50, 60), (70, 80, 90)]
+tuple2 = [(10, 20), (40, 50), (70, 80)]
+print(replace(tuple1, 100))
+print(replace(tuple2, 30))
+
+
+#Q12
+
+def sort_tuple(tup):
+    tup = list(tup)
+    a = []
+    for item in tup:
+        item = list(item)
+        item.reverse()
+        a.append(item)
+    a.sort()         #[[11, 'c'], [23, 'a'], [29, 'd'], [37, 'b']]
+    b = []
+    for item_ in a:
+        item_.reverse()
+        item_ = tuple(item_)
+        b.append(item_)
+    b = tuple(b)
+    return b
+
+tupl = (('a', 23),('b', 37),('c', 11), ('d',29))
+print(sort_tuple(tupl))
+
+
+
+
+
+
+
+
+
+
