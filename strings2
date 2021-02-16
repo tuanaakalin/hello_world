@@ -1,0 +1,255 @@
+#PS9
+#strings
+
+'''n = input()
+a = []
+for letter in n:
+    a.append(letter)
+print(a)
+a.reverse()
+for item in a:
+    print(item, end='')'''
+#"anything_or_space".join(my_list)  --->> gives the elements of my_list with anything between each of them
+#import re
+#re.split('any_symbol | another_symbol', phrase)  --->> gives a list of the elements by multiple delimeters
+
+
+#Q1
+n = input()
+a = []
+for i in n:
+    if n.index(i) % 2 == 0:
+        a.append(i)
+#print(a)
+for item in a:
+    print(item, end='')
+
+
+#Q2
+
+#a
+def ini_name(name):
+    name = name.split()
+    #return name
+    for word in name:
+        print(word[0], end=' ')
+    print()
+
+ini_name('Evan Rachel Wood')
+ini_name('Jude Law')
+ini_name('Jane Doe')
+
+#b
+def ini_last_name(name):
+    name = name.split()
+    last_name = name[len(name)-1]
+    for word in name[:len(name)-1]:
+        print(word[0].upper(), end='.')
+    print(last_name[0].upper() + last_name[1:].lower())
+
+ini_last_name('geeks for geeks')
+ini_last_name('mohandas karamchand gandhi')
+
+
+#Q3
+
+def spin_words(my_str):
+    res_str = ""
+    words = my_str.split()
+    #return words
+    for word in words:
+        if len(word) >= 5:
+            res_str += word[::-1] + " "
+        else:
+            res_str += word + " "
+    res_str = res_str.strip()    #in order to remove redundant spaces either beginning or at the end
+    return res_str
+
+print(spin_words('This is another test'))
+print(spin_words('You know you’re in love when you can’t fall asleep because reality is finally better than your dreams.'))
+print(spin_words('Challenges are what make life interesting and overcoming them is what makes life meaningful.'))
+
+
+#Q4
+
+def camel_case(my_str):
+    w = ""
+    import re
+    my_str = re.split('_|-', my_str)               #['to', 'camel', 'case']  #['Hard', 'exam', 'pLe']  #['unnecessarily', 'LONG', 'Example']
+    # return my_str
+    for word in my_str:
+        w = word[0].upper() + word[1:].lower()
+        print(w, end='')
+    print()
+
+camel_case('to_camel_case')
+camel_case('Hard_exam-pLe')
+camel_case('unnecessarily-LONG-Example')
+
+
+#Q5
+
+def find_replace(input, a, b):
+    res_str = ""
+    i = 0
+    while i <= len(input) - len(a):
+        #print(input[i:i+len(a)])
+        if input[i:i + len(a)] == a:
+            res_str += b
+            i += len(a)
+        else:
+            res_str += input[i]
+            i += 1
+    if i < len(input):
+        res_str += input[i]
+    return res_str
+
+print(find_replace('This is another test', 'is', 'is not'))
+print(find_replace('I mean, it went badly last time but surely it will go much better this time.', 'it', 'filling zepplins with hydrogen'))
+print(find_replace('Test test TeSt te st TEst teSt crest TEA', 'st TE', 'test'))
+
+
+#files & dictionaries
+
+#open() function:  open(file_name, mode) ==>>  open('my_file', 'r') --->> If you don't give the mode, then the default mode is 'r'.
+# 'r' is for reading the file and 'w' is for writing the file.
+#Since we don't give the path of the file, the file and python program should be in the same folder.
+#file_ = open('my_file.txt', 'r')
+#    for line in my_file:  --->>   reads line by line
+#to read the whole file: file_ = open('my_file.txt')
+#                                a = file_.read()
+#                                for i in a:          --->> reads character by character
+#my_dictionary = dict()  --->> creates a dictionary
+#my_dict['a_new_key'] = any_number_or_word
+#my_dict['a_new_key2'] = any_number_or_word2
+#my_dict = {'a_new_key':any_number_or_word, 'a_new_key2':any_number_or_word2}
+#my_dict.items() --->> gives the tuples consisting of keyse and their values
+#my_dict.keys() --->> gives the keys
+#to order a new line --->> '\n'
+
+
+#Q1
+
+f = open('inputs.txt', 'w')
+str_ = input()
+f.write(str_)
+f.close()
+print(f)
+
+
+#Q2
+
+ff = open('q2.txt', 'r')
+ff = ff.read()
+#Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. It has survived not only five centuries but also the leap into electronic typesetting, remaining essentially unchanged.
+ff = ff.strip()
+ff = ff.split('.')
+#['Lorem Ipsum is simply dummy text of the printing and typesetting industry', " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", ' It has survived not only five centuries but also the leap into electronic typesetting, remaining essentially unchanged', '']
+fs = []
+for item in ff:
+    item_ = item.strip()
+    fs.append(item_)
+#['Lorem Ipsum is simply dummy text of the printing and typesetting industry', "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'It has survived not only five centuries but also the leap into electronic typesetting, remaining essentially unchanged', '']
+for sentence in fs:
+    if sentence == '':
+        fs.remove(sentence)
+#['Lorem Ipsum is simply dummy text of the printing and typesetting industry', "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", 'It has survived not only five centuries but also the leap into electronic typesetting, remaining essentially unchanged']
+
+ff_ = open('q2_splitted.txt', 'w')
+for sen_ in fs:
+    sen_ = str(sen_)
+    sen_ += '.'
+    ff_.write(sen_ + '\n')
+ff_.close()
+
+
+#Q3
+
+file_name = str(input())
+t = open(file_name, 'r')
+t_ = open('file_for_q3_new.txt', 'w')
+for line in t:
+    line = line.strip()
+    line = list(line)
+    line.reverse()
+    line = ''.join(line)
+    t_.write(line + '\n')
+t_.close()
+
+
+#Q4
+
+file_n = input()
+tt = open(file_n, 'r')
+m = []
+for line in tt:
+    line_ = line.split()
+    for words in line_:
+        m.append(words)
+#print(m)
+n = []
+for items in m:
+    if items not in n:
+        n.append(items)
+for item in n:
+    count = m.count(item)
+    print(item, '-->', count)
+
+
+#Q5
+
+ttt = open('input.txt', 'r')
+tttt = open('pluralWords.txt', 'w')
+
+a = []
+for line in ttt:
+    line = line.strip()
+    a.append(line)
+#['lady', 'CMPE150', 'phone', 'Mr.Nobody', 'area51', '8ship', 'student', 'secretary', 'Dr.ErolBey', 'python_variable', 'Hello!', 'system']
+for item in a:
+    if item.isalpha():
+        if item.endswith('y'):
+            item_ = list(item)
+            item_.remove(item_[len(item_) - 1])
+            item_.append('ies')
+            item_ = ''.join(item_)
+            tttt.write(item_ + '\n')
+        else:
+            item_ = list(item)
+            item_.append('s')
+            item_ = ''.join(item_)
+            tttt.write(item_ + '\n')
+tttt.close()
+
+
+#Q6
+
+#a
+e =open('grades.txt', 'r')
+ee = open('corrected.txt', 'w')
+g = []
+for line in e:
+    line = line.strip()
+    line = line.split()
+    for notes in line:
+        if int(notes) < 0:
+            line[line.index(notes)] = '0'
+            ee.write(' '.join(line) + '\n')
+ee.close()
+
+#b
+m = open('corrected.txt', 'r')
+sum = 0
+a = []
+for line in m:
+    line = line.strip()
+    line_ = line.split()
+    for grades in line_:
+        sum += int(grades)
+        ave = sum * 30 / len(line_) / 100
+    a.append(ave)
+    sum = 0
+weighted_ave = 0
+for notes in a:
+    weighted_ave += notes
+print(weighted_ave)
