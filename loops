@@ -1,0 +1,357 @@
+#Q1
+
+print("*")
+
+for i in range(10):
+    print('*', end='')
+
+N = int(input())#for i in range(N):
+print('*')
+
+a = int(input())
+for i in range(a):
+    print("*", end='')
+
+
+#Q2
+
+num = int(input())
+for i in range(1, num + 1):
+    print(i, end=' ')
+
+
+#Q3
+
+A = int(input())
+B = int(input())
+t = int(input())
+for i in range(A, B + 1, t):
+    print(i, end=' ')
+
+
+A = int(input())
+B = int(input())
+t = int(input())
+for i in range(B, A - 1, -t):
+    print(i, end=' ')
+
+
+#Q4
+
+#A = int(input())
+B = int(input())
+sum = 0
+for i in range(A + 1, B):
+    if i % 2 == 0:
+        sum = sum + i
+print(sum)
+
+
+#Q5
+
+N = int(input())
+sum_ = 0
+for i in range(N):
+    sum_ = sum_ + int(input())
+print(sum_ / N)
+
+
+#Q6
+
+a = int(input())
+b = int(input())
+product_ = 1
+for i in range(1, b + 1):
+    product_ = product_ * a
+print(product_)
+
+
+#Q7
+
+n = int(input())
+product_ = 1
+for i in range(1, n+1):
+    product_ = product_ * i
+print(product_)
+
+
+#Q8
+
+a = int(input())
+prev = 0
+curr = 1
+if a >= 3:
+    for i in range(3, a + 1):
+        next = prev + curr
+        prev = curr
+        curr = next
+    print(curr)
+elif a == 2 or a == 1:
+    print("1")
+elif a == 0:
+    print(0)
+else:
+    print("invalid data")
+
+
+#Q9
+
+num = int(input())
+prev = 0
+curr = 0
+if num != 0:
+    prev = curr
+    curr = num
+    num = int(input())
+    while True:
+        if num == 0:
+            break
+        if num > prev and num > curr:
+            prev = curr
+            curr = num
+            num = int(input())
+            continue
+        elif curr > num > prev:
+            prev = num
+            num = int(input())
+            continue
+        elif num < curr and num < prev:
+            num = int(input())
+            continue
+print(curr - prev)
+
+
+#Q10
+
+n = int(input())
+count = 0
+total = 0
+while n >= 0.1:
+    m = n % 10
+    if m % 2 == 0:
+        total = total + m
+    n = n // 10
+    count = count + 1
+
+print(count, total, end=' ')
+
+
+#Q11
+
+sum = 0
+n = int(input())
+while n >= 0:
+    if n % 2 != 0:
+        sum = sum + n
+    n = int(input())
+print(sum)
+
+
+#Q12
+
+count = 1
+total = 0
+x = int(input())
+y = int(input())
+total = total + x
+while y <= x:
+    total = total + y
+    count = count + 1
+
+    x = y
+    y = int(input())
+print(total / count)
+
+
+#Q13
+
+count = 1
+num = 71
+n = int(input())
+while n != 71:
+    count = count + 1
+    if n < 71:
+        print("Too low!")
+        n = int(input())
+        continue
+    else:
+        print("Too high!")
+        n = int(input())
+        continue
+print("You got it!")
+print("And it took you only", count, "times!")
+
+
+#Q14                             >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>check it later!!!!!!!!!!!!!!!!!
+
+a = input("Please enter a number:")
+b = input("Please enter operation:")
+c = input("Please enter another number:")
+
+if b == "*":
+    while a and b and c != "q":
+        if a == "h" or b == "h" or c == "h":
+            print("q for quit")
+            print("h for help")
+            print("+ for addition")
+            print("- for subtraction")
+            print("* for multiplication")
+            print("/ for integer division")
+            print("Number is", result, "now.")
+            b = input("Please enter operation (h for help):")
+
+        a = int(a)
+        c = int(c)
+        if b == "+":
+            print("Number is", result + c, "now.")
+            result = result + c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "-":
+            print("Number is", result - c, "now.")
+            result = result - c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "*":
+            result = a * c
+            print("Number is", result, "now.")
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "/":
+            print("Number is", result / c, "now.")
+            result = result / c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+elif b == "+":
+    while a and b and c != "q":
+        if a == "h" or b == "h" or c == "h":
+            print("q for quit")
+            print("h for help")
+            print("+ for addition")
+            print("- for subtraction")
+            print("* for multiplication")
+            print("/ for integer division")
+            print("Number is", result, "now.")
+            b = input("Please enter operation (h for help):")
+
+        a = int(a)
+        c = int(c)
+        if b == "+":
+            result = a + c
+            print("Number is", result, "now.")
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "-":
+            print("Number is", result - c, "now.")
+            result = result - c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "*":
+            print("Number is", result * c, "now.")
+            result = result * c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "/":
+            print("Number is", result / c, "now.")
+            result = result / c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+elif b == "-":
+    while a and b and c != "q":
+        if a == "h" or b == "h" or c == "h":
+            print("q for quit")
+            print("h for help")
+            print("+ for addition")
+            print("- for subtraction")
+            print("* for multiplication")
+            print("/ for integer division")
+            print("Number is", result, "now.")
+            b = input("Please enter operation (h for help):")
+
+        a = int(a)
+        c = int(c)
+        if b == "+":
+            print("Number is", result + c, "now.")
+            result = result + c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "-":
+            result = a - c
+            print("Number is", result, "now.")
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "*":
+            print("Number is", result * c, "now.")
+            result = result * c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "/":
+            print("Number is", result / c, "now.")
+            result = result / c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+elif b == "/":
+    while a and b and c != "q":
+        if a == "h" or b == "h" or c == "h":
+            print("q for quit")
+            print("h for help")
+            print("+ for addition")
+            print("- for subtraction")
+            print("* for multiplication")
+            print("/ for integer division")
+            print("Number is", result, "now.")
+            b = input("Please enter operation (h for help):")
+
+        a = int(a)
+        c = int(c)
+        if b == "+":
+            print("Number is", result + c, "now.")
+            result = result + c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "-":
+            print("Number is", result - c, "now.")
+            result = result - c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "*":
+            print("Number is", result * c, "now.")
+            result = result * c
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
+
+        elif b == "/":
+            result = a / c
+            print("Number is", result, "now.")
+            b = input("Please enter operation (h for help):")
+            c = input("Please enter another number:")
+            continue
