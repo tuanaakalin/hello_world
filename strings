@@ -1,0 +1,277 @@
+#PS8
+#strings
+
+#Strings are immutable,too.If you make a modification, you need to assign it to a new variable to print it.
+#word = "banana"
+#m = list(word)          ['b', 'a,', 'n', 'a', 'n', 'a']
+#print(m.count("a"))
+#variable = "tu7ANa36"
+#print(variable.islower())  --->> returns True if variable is lowercase, otherwise  False
+#print(variable.isupper())  --->> returns True if variable is uppercase, otherwise  False
+#print(variable.isdigit())  --->> returns True if variable is a digit, otherwise    False
+#sth.isalpha()  --->> returns True if sth is composed of only letters
+#word.lower()  --->> returns the word in lowercase
+#word.upper()  --->> returns the word in lowercase
+###index for [4, 'i', 't', 8, 9] -->> forward: 0, 1, 2, 3, 4 backward: -5, -4, -3, -2, -1
+#concatenate: print(variable + 'word_or_letter')
+#sentence.strip()  --->>  removes redundant escapes (boşlukları kale alarak çünkü () içi boş... mesela phrase.strip(';') olsaydı başta ve sonda her; gördüğünü silecekti
+#sentence.lstrip(words_or_letters)  --->>  removes chosen words_or_letters from the beginning of the sentence; order or repetition doesn't matter
+#sentence.rstrip(words_or_letters)  --->>  removes chosen words_or_letters from the end of the sentence; order or repetition doesn't matter
+#sentence.split() --->> makes a list of the words the sentence have (Elemanları boşluk gördüğü yerden ayırır; mesela split(',') olsaydı , gördüğü yerden ayıracaktı!!)
+'''a = 'from stephenmajdj.56.47adg'
+a = a.split('.')
+print(a)'''  #['from stephenmajdj', '56', '47adg']
+#list.index(an_element)  ---->>  finds the index no of given element
+#list.isfound(word_element_or_anything)   --->>  returns True if word_element_or_anything is found in the list or anything
+#word_ = list(word) --->> creates a list of the letters of the given word
+#list.sort()  --->> orders the elements alphanumeracilly
+# 'any' + 'words'  --->> concatenates the phrases like 'anywords'
+# if string < another_string  --->> checks if string comes before another_string (according to the index no)
+#word * n  --->> to get n times word adjacent to each other
+#any_word.find('any_letter_or_phrase')  --->> check if any_letter_or_phrase is available in any_word and gives the index; if it is not available, then gives -1
+#word.replace('any_phrase', 'any_new_phrase')  --->> removes any_phrase in word and places any_new_phrase instead
+#sentence_or_word.startswith('anything') --->> if sentence_or_word starts with anything, then returns True, otherwise False
+#variable.endswith('any_word_or_letter')
+#any_phrase.find('n', 't')  --->> finds the _phrase right after sth in any_phrase     ???????????????
+#print(any_phrase[a:b]) --->> prints the characters from index a till index (b-1)
+#any_word[::-1]  --->> reads the word from end t beginning or you may use it to reverse the word
+#any_sentence_word_list.find(any_string_digit)  --->> gives the place (index) of any_string_digit in any_sentence_word_list
+#'any_symbol'.join(a_list)  --->> gives the elements of the list seperated by any_symbol
+#set(any_list) --->> removes the iterated elments due to the definition of sets
+#sorted(a_list) --->> gives the sorted version of a list
+#'any_phrase\nanother_phrase'  --->> gives another_phrase in a new line. Also \n is counted as 1 character not 2.
+
+
+#Q1
+
+def vowee(word):
+    count = 0
+    max_count = 0
+    for letter in word:
+        if letter in 'aeiou':
+            count += 1
+            max_count = count
+        else:
+            count = 0
+            continue
+    return max_count
+
+print(vowee('happy beaar'))
+print(vowee('aiaiai'))
+print(vowee('try'))
+print(vowee('how you doin?'))
+
+
+#Q2
+
+def palind(word):
+    if word == word[::-1]:
+        return True
+    else:
+        return False
+
+print(palind('madam'))
+print(palind('radix'))
+print(palind('tammat'))
+print(palind('test'))
+
+
+#Q3
+
+def upp_low(string):
+    string = list(string)
+    #print(string)
+    low_count = 0
+    upp_count = 0
+    for letter in string:
+        if letter.isupper():
+            upp_count += 1
+        elif letter.islower():
+            low_count += 1
+    return upp_count, low_count
+
+print(upp_low('CMPE will be fun'))
+print(upp_low('HeLLo WoRLD'))
+
+
+#Q4
+
+def password(word):
+    length = len(word)
+    word = list(word)
+    #print(word)
+    low = 0
+    upp = 0
+    dig = 0
+    if length < 6 or length > 20:
+        return False
+    else:
+        for letter in word:
+            if letter.islower():
+                low +=1
+            elif letter.isupper():
+                upp +=1
+            elif letter.isdigit():
+                dig +=1
+        if low > 0 and upp > 0 and dig > 0:
+            return True
+        else:
+            return False
+
+print(password('Covid19'))
+print(password('123456'))
+
+
+#Q5
+
+def ing(word):
+    if not len(word) >= 3:
+        return word
+    else:
+        length = len(word)
+        if word[length-3:length] != 'ing':
+            new_word = word + 'ing'
+        else:
+            new_word = word + 'ly'
+        return new_word
+
+print(ing('abc'))
+print(ing('string'))
+print(ing('ab'))
+
+
+#Q6
+
+#a
+n = str(input())
+print(n.strip())
+
+#b
+a = str(input())
+b = input()
+print(a.lstrip(b))
+print(a.rstrip(b))
+
+
+#Q7
+
+sentence = input()
+sentence = sentence.split()
+#print(sentence)
+min_len = 1000
+max_len = 0
+for word in sentence:
+    length = len(word)
+    if length > max_len:
+        max_len = length
+        max_word = word
+    elif length < min_len:
+        min_len = length
+        min_word = word
+print(min_word, max_word)
+
+
+#Q8
+def not_poor(sentence):
+    not_ = sentence.find('not')
+    poor_ = sentence.find('poor')
+    if not_ < poor_ and not_ > 0 and poor_ > 0:
+        sentence = sentence.replace(sentence[not_:poor_ + 4], 'good')
+        return sentence
+    else:
+        return sentence
+
+print(not_poor('The lyrics is not that poor!'))
+print(not_poor('The lyrics is poor!'))
+
+
+#Q9
+
+def word_case(sentence):
+    sentence = sentence.split()
+    a = list()
+    for word in sentence:
+        if sentence.index(word) % 2 == 0:
+            a.append(word.upper())
+        elif sentence.index(word) % 2 != 0:
+            a.append(word.lower())
+    for i in a:
+        print(i, end=' ')
+        
+word_case('stop making sponge bob memes')
+print()
+word_case('CMPE will be fun in the next few years')
+print()
+
+
+#Q10
+
+def cap_first_letter(s):
+    s = s.split()
+    #print(s)
+    a = list()
+    b = list()
+    for i in range(len(s)):
+        word = s[i].lower()
+        #print(word)
+        a.append(word)
+    #print(a)
+    for l in a:
+        l = list(l)
+        #print(l)
+        for m in l:
+            if l.index(m) == 0:
+                print(m.upper(), end='')
+            else:
+                print(m, end='')
+        print(end=' ')
+
+cap_first_letter('perFecT NORMAL sentence')
+print()
+cap_first_letter('A true friend overlooks your failures and tolerates your success')
+print()
+cap_first_letter('a WITTY saying proves nOthing')
+print()
+
+
+#Q11
+
+#a
+def ini_name(name):
+    name = name.split()
+    #print(name)
+    a = []
+    for word in name:
+        word = list(word)
+        letter = word[0].upper()
+        a.append(letter)
+    for i in a:
+        print(i, end=' ')
+    print()
+
+ini_name('Evan Rachel Wood')
+ini_name('Jude Law')
+ini_name('Jane Doe')
+
+#b
+def name_ini(name):
+    name = name.split()
+    for word in name[:len(name)-1]:
+        w = list(word)
+        print(w[0].upper(), end='.')
+    last = list(name[len(name)-1])
+    print(last[0].upper(), end='')
+    for l in last[1:]:
+        print(l, end='')
+    print()
+
+name_ini('geeks for geeks')
+name_ini('mohandas karamchand gandhi')
+
+
+#Q12
+
+s = input()
+s = s.split(', ')
+#print(s)
+print(','.join(sorted(set(s))))
