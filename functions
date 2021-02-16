@@ -1,0 +1,241 @@
+#Q1
+def leap_year(n):
+    if n % 400 == 0:
+        print("leap year")
+    elif n % 100 == 0:
+        print("not a leap year")
+    elif n % 4 == 0 and n % 100 != 0:
+        print("leap year")
+    else:
+        return False
+
+a = int(input())
+leap_year(a)
+
+
+#Q2
+
+def payment(x):
+    if stu == "True":
+        x = x // 2
+        print(x)
+    else:
+        print(x)
+
+n = int(input())
+stu = str(input())
+payment(n)
+
+
+def calculate_cost(cost, is_student):
+    if is_student:
+        cost /= 2                                    ####another way!!!
+    return cost
+print(calculate_cost(10, True))
+
+
+#Q3
+
+#a
+def power(x, y):
+    power = 1
+    if y != '':
+        for i in range(y):
+            power = power * x
+    elif y == '':
+        power = x * x
+    print(power)
+
+a = int(input())
+b = (input())
+power(a, b)
+
+def power(number, n=2):
+    result = 1
+    for i in range(n):
+        result *= number
+    print(result)                    #######another way!!!
+power(5)
+power(3, 2)
+power(4, 3)
+
+def power(number, n=2):
+    result = 1
+    for i in range(n):
+        result *= number
+    return result                   #######another way!!!
+print(power(5))
+print(power(3, 2))
+print(power(4, 3))
+
+#b
+def _pow(n):
+    print (n)
+    print(n * n)
+    print(n * n * n)
+    print(n * n * n * n)
+    print(n * n * n * n* n)
+    print(n * n * n * n* n * n)
+
+x = int(input())
+_pow(x)
+
+
+#Q4
+
+def is_prime(m):
+    for i in range(2, m):
+        if m % i == 0:
+            return False
+    return True
+
+a = int(input())
+print(is_prime(a))
+
+
+def is_prime(m):
+    prime = True
+    for i in range(2, m):
+        if m % i == 0:
+            return not prime            ##########another way
+    return prime
+
+a = int(input())
+print(is_prime(a))
+
+
+#Q5
+
+def is_prime(m):
+    for i in range(2, m):
+        if m % i == 0:
+            return False
+    return True
+
+def is_super(n):
+    for i in range(2, n):
+        if n % i == 0 and not is_prime(i):
+            return False
+    return True
+
+a = int(input())
+is_super(a)
+if is_super(a) is True:
+    print('Suuuper!')
+else:
+    print(':(')
+
+
+#Q6
+
+def abundant_num(a, b):
+    m = []
+    sum = 0
+    for number in range(a, b+1):
+        for i in range(1, number):
+            if number % i == 0:
+                sum += i
+        if sum > number:
+            m.append(number)
+        sum = 0
+    if len(m) != 0:
+        for item in m:
+            print(item, end=' ')
+    else:
+        print('no abundant number')
+    print()
+
+x, y = map(int, input().split())
+abundant_num(x, y)
+
+
+#Q7
+
+def rel_prime(m, n):
+    if m > n:
+        for i in range(2, n + 1):
+            if m % i == 0 and n % i == 0:
+                print("not relatively prime")
+                break
+            else:
+                continue
+        print("relatively prime")
+    elif n > m:
+        for i in range(2, m + 1):
+            if m % i == 0 and n % i == 0:
+                print("not relatively prime")
+                break
+            else:
+                continue
+        print("relatively prime")
+
+a = int(input())
+b = int(input())
+rel_prime(a, b)
+
+
+#Q8
+
+#a
+def rem_(x,y):
+    while x >= 0 and y > 0:
+        print(x % y)
+        x = x - x - 1
+        y = y - y - 1
+
+A = int(input())
+B = int(input())
+rem_(A, B)
+
+#b
+def gcd_(x, y):
+    gcd = 0
+    z = min(x, y)
+    for i in range(1, z+1):
+        if x % i == 0 and y % i == 0:
+            gcd = i
+    return gcd
+
+k = int(input())
+l = int(input())
+print(gcd_(k, l))
+
+#c
+def lcm_(a, b):
+    g = gcd_(a, b)
+    lcm = (a*b) // g
+    return lcm
+
+k = int(input())
+l = int(input())
+print(lcm_(k, l))
+
+
+#Q9
+
+def sq_(x):
+    if x >= 0:
+        root = x ** (1 / 2)
+        if root == int(root):
+            return True
+        else:
+            return False
+    else:
+        return False
+
+m = int(input())
+print(sq_(m))
+
+
+#Q10
+
+def mult(*numbers):
+    multiply_ = 1
+    for i in numbers:
+        multiply_ *= i
+    return multiply_
+
+print(mult(2, 3, 5))
+print(mult(7, 2))
+print(mult(7))
+print(mult(42, 96))
