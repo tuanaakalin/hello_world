@@ -1,15 +1,50 @@
-def gpa(*grades):
+def gpa_without_previous_gpa(*grades):
     grade_credit = []
     for grade in grades:
-        credit = int(input())
+        credit = int(input("Enter the credits respectively:"))
         grade_credit.append([grade, credit])
     grade_credit2 = []
     for pairs in grade_credit:
-        grade_credit2.append([pairs[0]*pairs[1], pairs[1]])
+        grade_credit2.append([pairs[0] * pairs[1], pairs[1]])
     sum_grades = 0
     sum_credits = 0
     for pairs_ in grade_credit2:
         sum_grades += pairs_[0]
         sum_credits += pairs_[1]
     final_gpa = sum_grades / sum_credits
-    return final_gpa
+    return "{:.2f}".format(final_gpa)
+
+def gpa_with_previous_gpa(*grades):
+    grade_credit = []
+    for grade in grades:
+        credit = int(input("Enter the credits respectively:"))
+        grade_credit.append([grade, credit])
+    grade_credit2 = []
+    for pairs in grade_credit:
+        grade_credit2.append([pairs[0] * pairs[1], pairs[1]])
+    sum_grades = previous_gpa * previous_total_credits
+    sum_credits = previous_total_credits
+    for pairs_ in grade_credit2:
+        sum_grades += pairs_[0]
+        sum_credits += pairs_[1]
+    final_gpa = sum_grades / sum_credits
+    return "{:.2f}".format(final_gpa)
+
+previous_gpa = input("Enter previous GPA:")
+previous_total_credits = input("Enter total credits till now (not including this semestr):")
+if previous_gpa == "-" and previous_total_credits == "-":
+    print(gpa_without_previous_gpa(4.00, 3.50, 4.00, 4.00, 4.00))
+else:
+    previous_gpa = float(previous_gpa)
+    previous_total_credits = float(previous_total_credits)
+    print(gpa_with_previous_gpa(4.00, 3.50, 4.00, 4.00, 4.00))
+
+
+
+
+
+
+
+
+
+
