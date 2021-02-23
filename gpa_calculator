@@ -30,21 +30,11 @@ def gpa_with_previous_gpa(*grades):
     final_gpa = sum_grades / sum_credits
     return "{:.2f}".format(final_gpa)
 
-previous_gpa = input("Enter previous GPA:")
-previous_total_credits = input("Enter total credits till now (not including this semestr):")
+previous_gpa = input("Enter previous GPA (If not, enter \"-\"):")
+previous_total_credits = input("Enter total credits till now (If not, enter \"-\"):")
 if previous_gpa == "-" and previous_total_credits == "-":
     print(gpa_without_previous_gpa(4.00, 3.50, 4.00, 4.00, 4.00))
 else:
     previous_gpa = float(previous_gpa)
     previous_total_credits = float(previous_total_credits)
     print(gpa_with_previous_gpa(4.00, 3.50, 4.00, 4.00, 4.00))
-
-
-
-
-
-
-
-
-
-
