@@ -1,0 +1,15 @@
+def gpa(*grades):
+    grade_credit = []
+    for grade in grades:
+        credit = int(input())
+        grade_credit.append([grade, credit])
+    grade_credit2 = []
+    for pairs in grade_credit:
+        grade_credit2.append([pairs[0]*pairs[1], pairs[1]])
+    sum_grades = 0
+    sum_credits = 0
+    for pairs_ in grade_credit2:
+        sum_grades += pairs_[0]
+        sum_credits += pairs_[1]
+    final_gpa = sum_grades / sum_credits
+    return final_gpa
