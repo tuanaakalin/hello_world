@@ -1,1 +1,14 @@
-
+import random
+para = 0
+for i in range(20000):
+    para += 5.4
+    zar = random.randint(1, 6)
+    if zar % 2 == 0:
+        para -= 3
+    elif zar == 1:
+        para -= 5
+    elif zar == 3:
+        para -= 7
+    else:
+        para -= 11
+    print(para)
